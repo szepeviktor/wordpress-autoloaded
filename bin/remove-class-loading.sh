@@ -5,12 +5,34 @@
 # 3. Find all references to these files
 # 4. Comment out all references
 
+Exclude_refs()
+{
+    # Containging other code beside classes
+    grep -v "'wp-admin/includes/deprecated\.php'" \
+        | grep -v "'wp-admin/includes/class-pclzip\.php'" \
+        | grep -v "WPINC\s*\.\s*'/user\.php'" \
+        | grep -v "WPINC\s*\.\s*'/compat\.php'" \
+        | grep -v "WPINC\s*\.\s*'/class-simplepie\.php'" \
+        | grep -v "WPINC\s*\.\s*'/rss\.php'" \
+        | grep -v "WPINC\s*\.\s*'/pluggable-deprecated\.php'" \
+        | grep -v "WPINC\s*\.\s*'/cache\.php'"
+}
+
+Exclude_files()
+{
+    # These does not load core
+    grep -v '^wp-includes/script-loader\.php:'
+}
 
 Get_class_files()
 {
-    sed -n -e "s#.* . '/app/wordpress/\(.*\)',#\1#p" ../../vendor/composer/autoload_classmap.php | sort -u \
+    sed -n -e "s#.* . '/app/wordpress/\(.*\)',#\1#p" ../../vendor/composer/autoload_classmap.php \
+        | sort -u \
         | sed -e 's#^wp-includes/##' \
-        | xargs -I "%" grep -r -E -x -n "\s*(require|include)(_once)?\(?\s*ABSPATH(\s*\.\s*WPINC)?\s*\.\s*'/?%'\s*\)?;.*" | cut -d ":" -f 1,2
+        | xargs -I "%" grep -r -E -x -n "\s*(require|include)(_once)?\(?\s*ABSPATH(\s*\.\s*WPINC)?\s*\.\s*'/?%'\s*\)?;.*" \
+        | Exclude_refs \
+        | Exclude_files \
+        | cut -d ":" -f 1,2
 }
 
 set -e
