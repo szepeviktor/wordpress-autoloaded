@@ -1,5 +1,5 @@
 {
-    "name": "wordpress-autoloaded",
+    "name": "szepeviktor/wordpress-autoloaded",
     "description": "Install WordPress with Composer class autoloading.",
     "type": "project",
     "license": "MIT",
@@ -44,8 +44,7 @@
         "classmap-authoritative": true
     },
     "scripts": {
-        "post-package-install": [
-            "bin/remove-class-loading.sh"
-        ]
+        "post-install-cmd": "bin/remove-class-loading.sh",
+        "post-update-cmd": "bin/remove-class-loading.sh"
     }
 }
