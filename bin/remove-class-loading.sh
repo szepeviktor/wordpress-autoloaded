@@ -30,6 +30,7 @@ Get_class_files()
         | sort -u \
         | sed -e 's#^wp-includes/##' \
         | xargs -I "%" grep -r -E -x -n "\s*(require|include)(_once)?\(?\s*ABSPATH(\s*\.\s*WPINC)?\s*\.\s*'/?%'\s*\)?;.*" \
+        | grep -v '^\.svn/' \
         | Exclude_refs \
         | Exclude_files \
         | cut -d ":" -f 1,2

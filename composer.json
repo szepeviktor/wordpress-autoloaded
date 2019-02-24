@@ -10,6 +10,11 @@
                 "name": "wordpress/wordpress",
                 "type": "wordpress-plugin",
                 "version": "4.9.9",
+                "source": {
+                    "url": "https://core.svn.wordpress.org/",
+                    "type": "svn",
+                    "reference": "tags/4.9.9/"
+                },
                 "dist": {
                     "url": "https://wordpress.org/wordpress-4.9.9-no-content.zip",
                     "type": "zip",
