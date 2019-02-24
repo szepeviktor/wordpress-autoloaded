@@ -8,7 +8,7 @@
             "type": "package",
             "package": {
                 "name": "wordpress/wordpress",
-                "type": "laravel-library",
+                "type": "wordpress-plugin",
                 "version": "4.9.9",
                 "dist": {
                     "url": "https://wordpress.org/wordpress-4.9.9-no-content.zip",
@@ -34,6 +34,15 @@
         "installer-paths": {
             "app/wordpress/": [
                 "wordpress/wordpress"
+            ],
+            "app/content/mu-plugins/{$name}/": [
+                "type:wordpress-muplugin"
+            ],
+            "app/content/plugins/{$name}/": [
+                "type:wordpress-plugin"
+            ],
+            "app/content/themes/{$name}/": [
+                "type:wordpress-theme"
             ]
         }
     },
