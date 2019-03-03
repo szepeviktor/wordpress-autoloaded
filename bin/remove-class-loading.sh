@@ -8,11 +8,10 @@
 Exclude_refs()
 {
     # Containging other code beside classes (+deprecated +compat)
-    # wp-admin/includes/class-wp-list-table-compat.php is OK
+    # wp-admin/includes/class-wp-list-table-compat.php is a class-only file
     grep -v "'wp-admin/includes/deprecated\.php'" \
         | grep -v "WPINC\s*\.\s*'/pluggable-deprecated\.php'" \
         | grep -v "WPINC\s*\.\s*'/compat\.php'" \
-        | grep -v "WPINC\s*\.\s*'/class-wp-list-table-compat\.php'" \
         | grep -v "WPINC\s*\.\s*'/random_compat/error_polyfill\.php'" \
         | grep -v "'wp-admin/includes/class-pclzip\.php'" \
         | grep -v "WPINC\s*\.\s*'/user\.php'" \
