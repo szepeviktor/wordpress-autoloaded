@@ -9,16 +9,16 @@
             "package": {
                 "name": "wordpress/wordpress",
                 "type": "wordpress-plugin",
-                "version": "5.1",
+                "version": "5.2",
                 "source": {
                     "url": "https://core.svn.wordpress.org/",
                     "type": "svn",
-                    "reference": "tags/5.1/"
+                    "reference": "tags/5.2/"
                 },
                 "dist": {
-                    "url": "https://wordpress.org/wordpress-5.1-no-content.zip",
+                    "url": "https://wordpress.org/wordpress-5.2-no-content.zip",
                     "type": "zip",
-                    "shasum": "e44bb0a84c5af88b881df86a309b7babefb8b977"
+                    "shasum": "262df47c3e1392eb990410427f7f8a1d461a2b2c"
                 },
                 "require": {
                     "composer/installers": "^1.6"
@@ -33,7 +33,7 @@
     ],
     "require": {
         "php": ">=7.0",
-        "wordpress/wordpress": "^5.1"
+        "wordpress/wordpress": "^5.2"
     },
     "extra": {
         "installer-paths": {
