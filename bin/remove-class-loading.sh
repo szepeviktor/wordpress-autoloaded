@@ -48,6 +48,11 @@ test -r ../../vendor/composer/autoload_classmap.php
 
 CLASS_FILES="$(Get_class_files)"
 
+if [ -z "$CLASS_FILES" ]; then
+    echo "Please enable authoritative class maps: composer dump-autoload --classmap-authoritative" 1>&2
+    exit 11
+fi
+
 while read -r FILE_LINE; do
     echo "$FILE_LINE ..."
     sed -e "${FILE_LINE#*:}"'s#.*#// AUTOLOADED &#' -i "${FILE_LINE%:*}"
