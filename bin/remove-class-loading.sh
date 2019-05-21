@@ -7,7 +7,7 @@
 
 Exclude_refs()
 {
-    # Containging other code beside classes (+deprecated +compat)
+    # Containing other code beside classes (+deprecated +compat)
     # wp-admin/includes/class-wp-list-table-compat.php is a class-only file
     grep -v "'wp-admin/includes/deprecated\.php'" \
         | grep -v "WPINC\s*\.\s*'/pluggable-deprecated\.php'" \
@@ -50,7 +50,7 @@ CLASS_FILES="$(Get_class_files)"
 
 while read -r FILE_LINE; do
     echo "$FILE_LINE ..."
-    sed -e "${FILE_LINE#*:}"'s#.*#// AUTOLOAD &#' -i "${FILE_LINE%:*}"
+    sed -e "${FILE_LINE#*:}"'s#.*#// AUTOLOADED &#' -i "${FILE_LINE%:*}"
 done <<<"$CLASS_FILES"
 
 echo "OK."
