@@ -44,12 +44,18 @@ test -d app/wordpress
 
 cd app/wordpress/
 
+# Already ran
+if grep -q '^// AUTOLOADED require' ./wp-settings.php; then
+    exit 0
+fi
+
 test -r ../../vendor/composer/autoload_classmap.php
 
 CLASS_FILES="$(Get_class_files)"
 
 if [ -z "$CLASS_FILES" ]; then
     echo "Please enable authoritative class maps: composer dump-autoload --classmap-authoritative" 1>&2
+    echo "Then restart this script: composer run-script post-install-cmd" 1>&2
     exit 11
 fi
 

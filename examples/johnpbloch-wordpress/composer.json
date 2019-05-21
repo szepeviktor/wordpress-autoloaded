@@ -1,0 +1,49 @@
+{
+    "name": "szepeviktor/wordpress-autoloaded",
+    "description": "Install WordPress with Composer class autoloading.",
+    "type": "project",
+    "license": "MIT",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "johnpbloch/wordpress": "^5.2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "app/wordpress/"
+        }
+    },
+    "extra": {
+        "wordpress-install-dir": "app/wordpress",
+        "installer-paths": {
+            "app/content/mu-plugins/{$name}/": [
+                "type:wordpress-muplugin"
+            ],
+            "app/content/plugins/{$name}/": [
+                "type:wordpress-plugin"
+            ],
+            "app/content/themes/{$name}/": [
+                "type:wordpress-theme"
+            ]
+        }
+    },
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "classmap-authoritative": true
+    },
+    "scripts": {
+        "post-install-cmd": "bin/remove-class-loading.sh",
+        "post-update-cmd": "bin/remove-class-loading.sh"
+    }
+}
