@@ -46,6 +46,7 @@ cd app/wordpress/
 
 # Already ran
 if grep -q '^// AUTOLOADED require' ./wp-settings.php; then
+    echo "Already autoloaded."
     exit 0
 fi
 

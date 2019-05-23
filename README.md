@@ -13,8 +13,8 @@ and unconditional class loading is commented out.
   see `composer.json` in examples/johnpbloch-wordpress/ directory
 - Add plugins e.g. `composer require wpackagist-plugin/wordpress-seo`
 - Add your theme
-- Prefer class autoloading in theme and plugins by simply adding
-  composer.json with the following
+- Prefer class autoloading in theme and plugins,
+  simply add the following to composer.json
 
 ```json
     "autoload": {
