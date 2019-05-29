@@ -1,6 +1,6 @@
 {
     "name": "szepeviktor/wordpress-autoloaded",
-    "description": "Install WordPress with Composer class autoloading.",
+    "description": "Run WordPress with Composer class autoloading.",
     "type": "project",
     "license": "MIT",
     "repositories": [
