@@ -1,72 +1,74 @@
 {
-  "name": "szepeviktor/wordpress-autoloaded",
-  "description": "Run WordPress with Composer class autoloading.",
-  "type": "project",
-  "license": "MIT",
-  "repositories": [
-    {
-      "type": "package",
-      "package": {
-        "name": "wordpress/wordpress",
-        "type": "wordpress-plugin",
-        "version": "5.2.1",
-        "source": {
-          "url": "https://core.svn.wordpress.org/",
-          "type": "svn",
-          "reference": "tags/5.2.1/"
+    "name": "szepeviktor/wordpress-autoloaded",
+    "description": "Run WordPress with Composer class autoloading.",
+    "type": "project",
+    "license": "MIT",
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "wordpress/wordpress",
+                "type": "wordpress-plugin",
+                "version": "5.2.1",
+                "source": {
+                    "url": "https://core.svn.wordpress.org/",
+                    "type": "svn",
+                    "reference": "tags/5.2.1/"
+                },
+                "dist": {
+                    "url": "https://wordpress.org/wordpress-5.2.1-no-content.zip",
+                    "type": "zip",
+                    "shasum": "b9e2cbf3dbd72d306ce4003c8dfd6ae63c29639f"
+                },
+                "require": {
+                    "composer/installers": "^v2.1"
+                },
+                "autoload": {
+                    "classmap": [
+                        "./"
+                    ]
+                }
+            }
         },
-        "dist": {
-          "url": "https://wordpress.org/wordpress-5.2.1-no-content.zip",
-          "type": "zip",
-          "shasum": "b9e2cbf3dbd72d306ce4003c8dfd6ae63c29639f"
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
         },
-        "require": {
-          "composer/installers": "^1.6"
-        },
-        "autoload": {
-          "psr-4": {
-            "": ""
-          }
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
         }
-      }
+    ],
+    "require": {
+        "php": "~7.4",
+        "wordpress/wordpress": "^5.2.1"
     },
-    {
-      "type": "composer",
-      "url": "https://wpackagist.org"
+    "extra": {
+        "installer-paths": {
+            "app/wordpress/": [
+                "wordpress/wordpress"
+            ],
+            "app/content/mu-plugins/{$name}/": [
+                "type:wordpress-muplugin"
+            ],
+            "app/content/plugins/{$name}/": [
+                "type:wordpress-plugin"
+            ],
+            "app/content/themes/{$name}/": [
+                "type:wordpress-theme"
+            ]
+        }
     },
-    {
-      "type": "composer",
-      "url": "https://asset-packagist.org"
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "classmap-authoritative": true,
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "bin/remove-class-loading.sh"
     }
-  ],
-  "require": {
-    "php": ">=7.0",
-    "wordpress/wordpress": "^5.2.1"
-  },
-  "extra": {
-    "installer-paths": {
-      "app/wordpress/": [
-        "wordpress/wordpress"
-      ],
-      "app/content/mu-plugins/{$name}/": [
-        "type:wordpress-muplugin"
-      ],
-      "app/content/plugins/{$name}/": [
-        "type:wordpress-plugin"
-      ],
-      "app/content/themes/{$name}/": [
-        "type:wordpress-theme"
-      ]
-    }
-  },
-  "config": {
-    "preferred-install": {
-      "*": "dist"
-    },
-    "classmap-authoritative": true
-  },
-  "scripts": {
-    "post-install-cmd": "bin/remove-class-loading.sh",
-    "post-update-cmd": "bin/remove-class-loading.sh"
-  }
 }

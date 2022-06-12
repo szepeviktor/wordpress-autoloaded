@@ -1,10 +1,12 @@
 # WordPress Autoloaded
 
-This is a boilerplate to start a fast WordPress website
-without unconditional class loading using [Composer](https://packagist.org/packages/szepeviktor/wordpress-autoloaded).
+A boilerplate to start a fast WordPress website
+without unconditional class loading using Composer autoloader.
 
 Core is downloaded from the [official ZIP](https://wordpress.org/download/releases/)
 and unconditional class loading is commented out.
+
+:bulb: Please also see [szepeviktor/composer-managed-wordpress](https://github.com/szepeviktor/composer-managed-wordpress)
 
 ### Usage
 

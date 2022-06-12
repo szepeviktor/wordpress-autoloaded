@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # 1. List all files Composer finds a class in
-# 2. Remove "wp-includes/" from path
+# 2. Remove "wp-includes/" part from path
 # 3. Find all references to these files
 # 4. Comment out all references
 

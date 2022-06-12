@@ -14,13 +14,13 @@
         }
     ],
     "require": {
-        "php": ">=7.0",
+        "php": "~7.4",
         "johnpbloch/wordpress": "^5.2.1"
     },
     "autoload": {
-        "psr-4": {
-            "": "app/wordpress/"
-        }
+        "classmap": [
+            "app/wordpress/"
+        ]
     },
     "extra": {
         "wordpress-install-dir": "app/wordpress",
@@ -40,10 +40,13 @@
         "preferred-install": {
             "*": "dist"
         },
-        "classmap-authoritative": true
+        "classmap-authoritative": true,
+        "allow-plugins": {
+            "composer/installers": true,
+            "johnpbloch/wordpress-core-installer": true
+        }
     },
     "scripts": {
-        "post-install-cmd": "bin/remove-class-loading.sh",
-        "post-update-cmd": "bin/remove-class-loading.sh"
+        "post-autoload-dump": "bin/remove-class-loading.sh"
     }
 }
