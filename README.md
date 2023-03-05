@@ -8,7 +8,13 @@ and unconditional class loading is commented out.
 
 :bulb: Please also see [szepeviktor/composer-managed-wordpress](https://github.com/szepeviktor/composer-managed-wordpress)
 
-### Usage
+## Support my work
+
+Please consider sponsoring me monthly if you use my packages in an agency.
+
+[![Sponsor](https://github.com/szepeviktor/.github/raw/master/.github/assets/github-like-sponsor-button.svg)](https://github.com/sponsors/szepeviktor)
+
+## Usage
 
 - Clone [this repository](https://github.com/szepeviktor/wordpress-autoloaded)
 - Optionally use `johnpbloch/wordpress` package instead of the included official ZIP,
@@ -29,10 +35,10 @@ and unconditional class loading is commented out.
     }
 ```
 
-### Configuring WordPress
+## Configuring WordPress
 
 Add Composer autoloader to `app/wp-config.php`
 
 ```php
-require_once dirname( __DIR__ ) . '/vendor/autoload.php';
+require_once dirname(__DIR__) . '/vendor/autoload.php';
 ```

@@ -40,7 +40,7 @@
         }
     ],
     "require": {
-        "php": "~7.4",
+        "php": "~7.4.0",
         "wordpress/wordpress": "^5.2.1"
     },
     "extra": {
