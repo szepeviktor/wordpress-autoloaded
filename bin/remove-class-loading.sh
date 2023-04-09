@@ -60,9 +60,17 @@ if [ -z "$CLASS_FILES" ]; then
     exit 11
 fi
 
+if [ "${TRAVIS}" == true ]; then
+    echo "travis_fold:start:remove_class_loading_files"
+fi
+
 while read -r FILE_LINE; do
     echo "$FILE_LINE ..."
     sed -e "${FILE_LINE#*:}"'s#.*#// AUTOLOADED &#' -i "${FILE_LINE%:*}"
 done <<<"$CLASS_FILES"
+
+if [ "${TRAVIS}" == true ]; then
+    echo "travis_fold:end:remove_class_loading_files"
+fi
 
 echo "OK."
