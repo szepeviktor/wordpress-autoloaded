@@ -61,7 +61,7 @@ if [ -z "$CLASS_FILES" ]; then
 fi
 
 if [ "${TRAVIS}" == true ]; then
-    echo "travis_fold:start:Autoloaded_files"
+    echo "travis_fold:start:remove_class_loading_files"
 fi
 
 while read -r FILE_LINE; do
@@ -70,7 +70,7 @@ while read -r FILE_LINE; do
 done <<<"$CLASS_FILES"
 
 if [ "${TRAVIS}" == true ]; then
-    echo "travis_fold:end:Autoloaded_files"
+    echo "travis_fold:end:remove_class_loading_files"
 fi
 
 echo "OK."
